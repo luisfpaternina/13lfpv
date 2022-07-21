@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>     
+<odoo>
+    <data>
+        <record id="view_pos_order_venta_actual_tree" model="ir.ui.view">
+            <field name="name">inherit.pos.order.tree</field>
+            <field name="model">pos.order</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="venta_actual" create="false" edit="false">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_pos_order_venta_actual">
+            <field name="name">Venta actual</field>
+            <field name="res_model">pos.order</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="norauto_pos_extended.view_pos_order_venta_actual_tree"/>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create record
+                </p>
+            </field>
+        </record>
+
+        <menuitem 
+            id="pos_order_venta_Actual"
+            name="Venta actual"
+            parent="point_of_sale.menu_point_rep"
+            action="action_view_pos_order_venta_actual"/>        
+    </data>
+</odoo>
