@@ -12,6 +12,17 @@
             </field>
         </record>
 
+        <record id="view_pos_order_venta_actual_graph" model="ir.ui.view">
+            <field name="name">inherit.pos.order.graph</field>
+            <field name="model">pos.order</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <graph string="Point of Sale Orders">
+                    <field name="name" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                </graph>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="action_view_pos_order_venta_actual">
             <field name="name">Venta actual</field>
             <field name="res_model">pos.order</field>
