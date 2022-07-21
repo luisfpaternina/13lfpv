@@ -28,6 +28,7 @@
             id="pos_order_venta_Actual"
             name="Venta actual"
             parent="point_of_sale.menu_point_rep"
-            action="action_view_pos_order_venta_actual"/>        
+            action="action_view_pos_order_venta_actual"/>
+
     </data>
 </odoo>
