@@ -29,7 +29,7 @@
             <field name="view_mode">dashboard</field>
             <field name="view_id" ref="norauto_pos_extended.view_pos_order_venta_actual_graph"/>
             <field name="domain">[('date_order','>=',((context_today())).strftime('%Y-%m-%d 00:00:00')), ('date_order', '&lt;=',((context_today())).strftime('%Y-%m-%d 23:59:59'))]</field>
-            <field name="context">{'graph': {'graph_measure': 'price_total', 'graph_mode': 'line', 'graph_groupbys': ['date:day', 'location_id']}, 'pivot': {'pivot_measures': ['order_id', 'product_qty', 'price_total'], 'pivot_column_groupby': ['date:month'], 'pivot_row_groupby': ['product_categ_id']}, 'timeRangeMenuData': {'comparisonField': 'date', 'timeRange': "['&amp;',('date', '>=', (datetime.datetime.combine(context_today() + relativedelta(day=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')),('date', '&lt;', (datetime.datetime.combine(context_today() + relativedelta(day=1, months=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]", 'timeRangeDescription': 'Este mes', 'comparisonTimeRange': '[]'}}</field>
+            <field name="context"></field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">No hay datos
                 </p>
