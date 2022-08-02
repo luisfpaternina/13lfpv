@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+
         <record id="purchase_order_form_inherit" model="ir.ui.view">
             <field name="name">purchase.order</field>
             <field name="model">purchase.order</field>
@@ -11,5 +12,18 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="purchase_order_search_inherit" model="ir.ui.view">
+            <field name="name">purchase.order</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <separator/>
+                    <field name="name"/>
+                </field>
+            </field>
+        </record>
+
     </data>
 </odoo>
