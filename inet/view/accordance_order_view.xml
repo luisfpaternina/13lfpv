@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="accordande_tree_id" model="ir.ui.view">
+            <field name="name">Orden de conformidad</field>
+            <field name="model">accordance.order</field>
+            <field name="arch" type="xml">
+                <tree string="Orden de conformidad">
+                    <field name="name"/>
+                    <field name="date_start"/>
+                    <field name="date_stop"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="accordance_form_id" model="ir.ui.view">
+            <field name="name">accordance.order.view</field>
+            <field name="model">accordance.order</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="N° Conformidad"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date_start"/>
+                                <field name="purchase_id"/>
+                                <field name="employee_id"/>
+                                <field name="work_done"/>
+                            </group>
+                            <group>
+                                <field name="date_stop"/>
+                                <field name="sale_id"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Adicional">
+                                <group string="Documentos relacionados">
+                                    <field name="document_ids" widget="many2many_checkboxes" nolabel="1"/>
+                                </group>
+                                <label for="others"/>
+                                <field name="others"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="accordance_action" model="ir.actions.act_window">
+            <field name="name">AC-Proveedor</field>
+            <field name="res_model">accordance.order</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click para crear un acta de conformidad
+                </p>
+                <p>
+                    Registrar un acta de conformidad para su impresion
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_accordance" name="Acta de conformidad" parent="project.menu_project_management" groups="group_accordance" sequence="6"/>
+        <menuitem id="menu_accordance_action" action="accordance_action" parent="menu_accordance" sequence="1"/>
+
+        <report
+            id="action_accordance_order"
+            model="accordance.order"
+            report_type="qweb-pdf"
+            string="Conformidad"
+            name="inet.report_accordance_order"
+            file="inet.report_accordance_order"
+        />
+    </data>
+</odoo>

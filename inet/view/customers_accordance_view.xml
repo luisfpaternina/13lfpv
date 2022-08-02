@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="customers_accordance_tree" model="ir.ui.view">
+            <field name="name">AC-Clientes</field>
+            <field name="model">customers.accordance</field>
+            <field name="arch" type="xml">
+                <tree string="AC-Clientes">
+                    <field name="name"/>
+                    <field name="date_start"/>
+                    <field name="date_stop"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="customers_accordance_form" model="ir.ui.view">
+            <field name="name">AC-Clientes</field>
+            <field name="model">customers.accordance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="report_xls" string="Imprimir" type="object"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <label string="N° Conformidad"/>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                            <group>
+                                <group>
+                                    <field name="customer_id"/>
+                                    <field name="project_id" domain="[('partner_id','=',customer_id)]"/>
+                                    <field name="sale_id" domain="[('partner_id','=',customer_id)]"/>
+                                    <field name="price_total"/>
+                                    <field name="header"/>
+                                </group>
+                                <group>
+                                    <field name="date_start"/>
+                                    <field name="date_stop"/>
+                                    <field name="purchase_id"/>
+                                    <field name="description"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Entregables">
+                                    <group>
+                                        <field name="line_accordance_ids" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="name"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                                <page string="Firmas">
+                                    <group>
+                                        <field name="sign_line" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="partner_id"/>
+                                                <field name="date_sign"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="customers_accordance_action" model="ir.actions.act_window">
+            <field name="name">AC-Clientes</field>
+            <field name="res_model">customers.accordance</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click para crear un acta de cliente
+                </p>
+                <p>
+                    Registrar un acta de clientes para su impresion
+                </p>
+            </field>
+        </record>
+
+        <report
+            id="action_customers_accordance"
+            model="customers.accordance"
+            report_type="qweb-pdf"
+            string="AC-Clientes"
+            name="inet.report_customers_accordance"
+            file="inet.report_customers_accordance"/>
+
+        <menuitem id="menu_customers_accordance" action="customers_accordance_action" parent="menu_accordance" sequence="2"/>
+    </data>
+</odoo>

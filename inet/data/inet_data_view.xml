@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="True">
+        <record id="seq_type_mobility" model="ir.sequence.type">
+            <field name="name">Mobility</field>
+            <field name="code">mobility</field>
+        </record>
+        <record id="sequence_mobility" model="ir.sequence">
+            <field name="name">Mobility</field>
+            <field eval="4" name="padding"/>
+            <field name="prefix">M</field>
+            <field name="code">mobility</field>
+            <field name="implementation">no_gap</field>
+        </record>
+        <record id="seq_type_accordance" model="ir.sequence.type">
+            <field name="name">accordance</field>
+            <field name="code">accordance</field>
+        </record>
+        <record id="sequence_accordance" model="ir.sequence">
+            <field name="name">accordance</field>
+            <field eval="4" name="padding"/>
+            <field name="prefix">C</field>
+            <field name="code">accordance</field>
+            <field name="implementation">no_gap</field>
+        </record>
+        <record id="seq_customers_accordance" model="ir.sequence.type">
+            <field name="name">CustomersAccordance</field>
+            <field name="code">CustomersAccordance</field>
+        </record>
+        <record id="sequence_customers_accordance" model="ir.sequence">
+            <field name="name">customers accordance</field>
+            <field eval="4" name="padding"/>
+            <field name="prefix">ACC-</field>
+            <field name="code">CustomersAccordance</field>
+            <field name="implementation">no_gap</field>
+        </record>
+
+        <!-- document relationship -->
+        <record id="document_relationship1" model="document.relationship">
+            <field name="name">Informe tecnico de cierre</field>
+        </record>
+        <record id="document_relationship2" model="document.relationship">
+            <field name="name">Planos layout</field>
+        </record>
+        <record id="document_relationship3" model="document.relationship">
+            <field name="name">Direccionamiento de red</field>
+        </record>
+        <record id="document_relationship4" model="document.relationship">
+            <field name="name">Diagrama fisico</field>
+        </record>
+        <record id="document_relationship5" model="document.relationship">
+            <field name="name">Diagrama logico</field>
+        </record>
+        <record id="document_relationship6" model="document.relationship">
+            <field name="name">EDT</field>
+        </record>
+        <record id="document_relationship7" model="document.relationship">
+            <field name="name">Otros (Texto)</field>
+        </record>
+    </data>
+</odoo>

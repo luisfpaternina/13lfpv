@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="invoice_tree_inherit" model="ir.ui.view">
+            <field name="name">account.invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_due']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_due']" position="after">
+                    <field name="date_due2"/>
+                </xpath>
+                <xpath expr="//field[@name='number']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="sale_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- invoice sale -->
+        <record id="form_invoice_sale_inherit" model="ir.ui.view">
+            <field name="name">account.invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term']" position="attributes">
+                    <attributes name="required">True</attributes>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="number_out" />
+                </xpath>
+                <xpath expr="//field[@name='invoice_line']/tree/field[@name='product_id']" position="before">
+                    <field name="number_item"/>
+                </xpath>
+                <xpath expr="//field[@name='fiscal_position']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_due']" position="after">
+                    <field name="date_reception"/>
+                    <field name="date_due2"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- invoice purchase -->
+        <record id="form_invoice_purchase_inherit" model="ir.ui.view">
+            <field name="name">account.invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term']" position="attributes">
+                    <attributes name="required">True</attributes>
+                </xpath>
+                <xpath expr="//field[@name='supplier_invoice_number']" position="after">
+                    <field name="motive" required="True"/>
+                    <!--<field name="delivered" groups="base.group_hr_user,base.group_hr_manager"/>-->
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="customer"/>
+                </xpath>
+                <xpath expr="//field[@name='fiscal_position']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='reference_type']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='reference']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='period_id']" position="after">
+                    <field name="sale_id" required="True"/>
+                </xpath>
+                <xpath expr="//field[@name='date_invoice']" position="attributes">
+                    <attribute name="required">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_due']" position="after">
+                    <field name="date_reception"/>
+                    <field name="date_due2"/>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="invoice_purchase_menu" name="Comprobantes de proveedor" action="account.action_invoice_tree2" parent="hr_expense.next_id_49" groups="base.group_user,base.group_hr_user"/>
+        <menuitem action="hr_expense.expense_all" id="hr_expense.menu_expense_all" name="Expenses" parent="hr_expense.next_id_49" groups="base.group_hr_user"/>
+    </data>
+</odoo>

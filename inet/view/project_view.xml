@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="project_form_inherit" model="ir.ui.view">
+            <field name="name">project.project</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <newline/>
+                    <field name="note"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_kanban_inherit" model="ir.ui.view">
+            <field name="name">project.project</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_kanban_footer_left']" position="after">
+                    <div class="oe_kanban_project_lis">
+                        <field name='note'/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

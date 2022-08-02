@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_brand,product.brand,inet.model_product_brand,base.group_user,1,0,0,0
+access_petty_cash_hr,petty.cash,petty_cash.model_petty_cash,base.group_user,1,0,0,0
+access_estimated_sale_user,estimated.sale,inet.model_estimated_sale,base.group_sale_salesman,1,1,1,1
+access_expense_employee_hr,expense.employee,expense_employee.model_expense_employee,base.group_user,1,1,1,1
+access_refund_expense_employee_hr,refund.expense,expense_employee.model_refund_expense,base.group_user,1,1,1,1
+access_accordance,accordance.order,model_accordance_order,inet.group_accordance,1,1,1,1
+access_customers_accordance,customers.accordance,model_customers_accordance,inet.group_accordance,1,1,1,1
+access_customers_accordance_line,line.accordance,model_line_accordance,inet.group_accordance,1,1,1,1
+access_sign_accordance,sign_accordance,model_sign_accordance,inet.group_accordance,1,1,1,1
+access_document_relationship_user,document.relationship,model_document_relationship,purchase.group_purchase_user,1,1,0,0

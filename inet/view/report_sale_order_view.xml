@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <!-- <template id="report_saleorder_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@t-if='doc.user_id']" position="replace">
+                <div t-if="doc.user_id.name" class="col-xs-3">
+                    <strong>Salesperson:</strong>
+                    <p t-field="doc.user_id.name"/>
+                    <p t-field="doc.user_id.mobile"/>
+                </div>
+            </xpath>
+        </template> -->
+    </data>
+</odoo>

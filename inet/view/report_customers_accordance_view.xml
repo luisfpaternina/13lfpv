@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_customers_accordance_document">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row text-right">
+                        <div class="col-xs-12">
+                            Lima
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            El presente documento representa la aceptación y conformidad en la ejecución de las actividades relacionadas al servicio de: gllbl realizado durante el periodo <span t-field="o.date_start"/> - <span t-field="o.date_stop"/>, con el siguiente detalle.
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <strong>Cliente:</strong>
+                            <span t-field="o.customer_id"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <strong>N° Pedido:</strong>
+                            <span t-field="o.sale_id.name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <strong>Proyecto:</strong>
+                            <span t-field="o.project_id.name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <strong>N° Orden de Compra:</strong>
+                            <span t-field="o.purchase_id.name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <strong>Precio + IGV:</strong>
+                        </div>
+                    </div>
+                    <br/>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="text-left"><strong>Entregables</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.line_accordance_ids" t-as="line">
+                                <td>
+                                    <span t-field="line.name"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="width:30%;"><strong>Nombre / Rol</strong></th>
+                                <th class="text-center" style="width:31%;"><strong>Firma</strong></th>
+                                <th class="text-center" style="width:10%;"><strong>Fecha</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.sign_line" t-as="line">
+                                <td>
+                                    <span t-field="line.partner_id.name"/>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <span t-field="line.date_sign"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+        <template id="report_customers_accordance">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'purchase_id.partner_id.lang', 'inet.report_customers_accordance_document')"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

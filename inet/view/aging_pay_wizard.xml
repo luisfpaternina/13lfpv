@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wizard_aging_pay" model="ir.ui.view">
+            <field name="name">aging.pay</field>
+            <field name="model">aging.pay</field>
+            <field name="arch" type="xml">
+                <form string="Anticuamiento de Pago">
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="range_date"/>
+                        <field name="company_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Rango" attrs="{'invisible': [('range_date','=',False)]}">
+                            <group>
+                            <label for="date_from" string="Rango"/>
+                            <div>
+                                <field name="date_from" class="oe_inline" attrs="{'required':[('range_date','=',True)]}"/> -
+                                <field name="date_to" class="oe_inline" attrs="{'required':[('range_date','=',True)]}"/>
+                            </div>
+                            </group>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <widget type="download_button" model="aging.pay.xls" class="oe_highlight" string="Imprimir"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="aging_pay_action" model="ir.actions.act_window">
+            <field name="name">Acuentamiento de Pago</field>
+            <field name="res_model">aging.pay</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="aging_pay_menu" name="Compras por pagar" action="aging_pay_action" parent="base.next_id_73" sequence="5"/>
+    </data>
+</odoo>

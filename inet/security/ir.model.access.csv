@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_estimated_sale_user,estimated.sale,inet.model_estimated_sale,sales_team.group_sale_salesman,1,1,1,1
+access_report_sale_user,report.sale,inet.model_report_sale,sales_team.group_sale_salesman,1,1,1,1
+access_product_brand,product_brand.product_brand,model_product_brand,base.group_user,1,1,1,1 
+access_estimated_config,estimated_config.estimated_config,model_estimated_config,base.group_user,1,1,1,1 

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_portal_template_inherit" name="Portal template Inherit sale" inherit_id="sale.sale_order_portal_content" priority="20">
+        <xpath expr="//div[2]/div[1]" position="attributes">
+            <attribute name="hidden">True</attribute>
+        </xpath>
+        <xpath expr="//div[2]/section[4]" position="attributes">
+            <attribute name="hidden">True</attribute>
+        </xpath>
+        <xpath expr="//div[2]/section[3]" position="attributes">
+            <attribute name="hidden">True</attribute>
+        </xpath>
+        <xpath expr="////div[2]/section[1]" position="attributes">
+            <attribute name="hidden">True</attribute>
+        </xpath>
+        <xpath expr="//div" position="replace">
+        
+            <div id="introduction_inherit" class="pb-2 pt-3 card-header bg-white;" style="background-color:white; border-bottom:0">
+                
+                <div class="o_clean_header">
+                    <div class="row">
+                              <div class="col-3">
+		                              <img src="/inet/static/src/img/logo-inet-original_off.jpg" style="max-height: 90px;"/>
+                              </div>
+                              <div class="col-4 text-left" style="font-size: 10px; margin-top: 8px; padding-left:43px;">
+                                <ul class="list-unstyled">
+                                  <li><strong>INET PERÚ S.A.C</strong></li>
+                                  <li><span>CALLE OLAVIDE N° 140 SAN ISIDRO LIMA - LIMA</span></li>
+                                  <li>RUC: <span>20555241811</span></li>
+                                  <li>Teléfono: <span>(+51) 421-5347</span></li>
+                                  <li>Correo: <span>administración@i-net.pe</span></li>
+                                  <li>Web: <span>www.i-net.pe</span></li>
+                                </ul>
+                              </div>
+                              
+                              <div class="col-5 text-left" style="font-size: 10px; margin-top: 8px; padding-left:50px;">
+                                <ul class="list-unstyled">
+                                  <li><strong>INFORMACIÓN BANCARIA DE INET PERÚ S.A.C</strong></li>
+                                  <li><strong>CTA. CTE DÓLARES, Banco de Crédito del Perú</strong></li>
+                                  <li><span>BENEFICIARIO: Inet Peru Sac</span></li>
+                                  <li><span>N° CUENTA: 194-2333384-1-44</span></li>
+                                  <li><span>CÓDIGO INTERBANCARIO: 00219400233338414495</span></li>
+                                </ul>
+                              </div>
+                      </div>
+                      <h5 style="text-align: center; font-weight: bold; margin-top: 15px;">
+                        <t t-esc="sale_order.type_name"/>
+                        <span t-esc="sale_order.name"/>
+                      </h5>
+                  </div>
+            </div>
+                  
+              <!--    <h2 class="my-0" style="text-align: center;">
+                <t t-esc="sale_order.type_name"/>
+                <em t-esc="sale_order.name"/>
+            </h2>  -->
+        </xpath>
+
+        <xpath expr="//div[2]/section[1]" position="after">
+<!--       <div style="border-top:1px solid #000 !important">
+            </div>
+            <div style="border-top:1px solid #000 !important">
+                <br></br>
+	   </div> -->
+	   <style>
+div.card-body {
+  padding: 0 10px;
+}
+
+ul.list-unstyled {
+  margin-bottom: 0px;
+}
+</style>
+            <t t-set="display_discount" t-value="True in [line.discount &gt; 0 for line in sale_order.order_line]"/>
+            
+            <table style="width: 100%; border: 1px solid black; margin-bottom: 10px;">
+                     	 	<tr>
+                     	 	  <td>
+                              	<div class="row">
+                                <div class="col-2 text-left" style="font-size:10px; margin-bottom:0px; padding-left: 18px;">
+                                    <ul class="list-unstyled">
+                                      <li><strong>Cliente</strong></li>
+                                      <li><strong>RUC</strong></li>
+                                      <li><strong>Dirección</strong></li>
+                                      <li><strong>Contacto cliente</strong></li>
+                                      <li><strong>Referencia</strong></li>
+                                    </ul>
+                                  </div>
+                                  <div class="col-6 text-left" style="font-size:10px; padding-left: 18px;">
+                                    <ul class="list-unstyled">
+                                      <li> <span t-field="sale_order.partner_id"/></li>
+                                      <li> <span t-field="sale_order.partner_id.vat"/></li>
+                                      <li> <span t-field="sale_order.partner_id.street"/></li>
+                                      <li> <span t-field="sale_order.contact_id"/></li>
+                                      <li> <span t-field="sale_order.client_order_ref"/></li>
+                                    </ul>
+                               </div>
+                               
+                                <div class="col-2 text-left" style="font-size:10px; margin-bottom:0px;">
+                                    <ul class="list-unstyled">
+                                      <li><strong>Gestor de cuenta</strong></li>
+                                      <li><strong>Fecha de emisión</strong></li>
+                                      <li><strong>Fecha de expiración</strong></li>
+                                      <li><strong>Condición de pago</strong></li>
+                                      <li><strong>Moneda</strong></li>
+                                    </ul>
+                                  </div>
+                                  <div class="col-2 text-left" style="font-size:10px;">
+                                    <ul class="list-unstyled">
+                                      
+                                      <li> <span t-field="sale_order.user_id"/></li>
+                                      <li> <span t-field="sale_order.date_order" t-field-options="{&quot;format&quot;: &quot;MM dd y h:mm a&quot;}"/></li>
+                                      <li> <span t-field="sale_order.validity_date"/></li>
+                                      <li> <span t-field="sale_order.payment_term_id.name"/></li>
+                                      <li> <span t-field="sale_order.currency_sale.name"/></li>
+                                    </ul>
+                               </div>
+		           </div>	
+		           </td>
+                      		</tr>
+                      		
+			</table>
+            
+            <div>
+                <table class="table table-sm; table-bordered" id="sales_order_table_inherit" style="text-align: center;margin-bottom: 0px;">
+                    <thead class="bg-100; table-active">
+                        <tr>
+                            <th class="text-center" style="border: black 1px solid; padding: 0; width: 4%; font-size:12px;">Item</th>
+                            <th class="text-center" style="border: black 1px solid; padding: 0; width: 10%; font-size:12px;">Código</th>
+                            <th class="text-center" style="border: black 1px solid; padding: 0; font-size:12px;">Descripción</th>
+                            <th class="text-center" style="border: black 1px solid; padding: 0; width: 10%; font-size:12px;">Marca</th>
+                            <th class="text-center" style="border: black 1px solid; padding: 0; width: 5%; font-size:12px;">U.M</th>
+                            <th class="text-center" style="border: black 1px solid; padding: 0; width: 5%; font-size:12px;">Cant.</th>
+                            <th class="text-center" style="border: black 1px solid; padding: 0; width: 10%; font-size:12px;">V. Unit</th>
+	         <!--           <th class="text-center" style="border: black 1px solid; padding: 0;">%Desc.</th>  -->
+                            <th t-attf-class="text-center {{ 'd-none d-sm-table-cell' if report_type == 'html' else '' }}" style="border: black 1px solid;padding: 0;width: 10%; font-size:12px;">P. Unit</th>
+                            <th class="text-center" style="border: black 1px solid; padding: 0; width: 7%; font-size:12px;">
+                                <span groups="account.group_show_line_subtotals_tax_excluded">P. Total</span>
+                                <span groups="account.group_show_line_subtotals_tax_included">P. Total</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+
+                        <t t-set="current_subtotal" t-value="0"/>
+
+                        <t t-foreach="sale_order.order_line" t-as="line">
+
+                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+
+                            <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                <t t-if="not line.display_type">
+
+                                    <td class="text-center" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;">
+                                        <div id="item_product">
+                                            <span t-field="line.item"/>
+                                        </div>
+                                    </td>
+
+                                    <td class="text-center" style="border: black 1px solid;padding: 2px;vertical-align:inherit; font-size:10px;" id="product_name"><span t-field="line.product_id.default_code"/></td>
+
+                                    <td class="text-left" style="border: black 1px solid;padding: 2px;vertical-align:inherit; font-size:10px;" id="product_description"><span t-field="line.name"/></td>
+
+                                    <td class="text-center" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;" id="product_brand"><span t-field="line.brand_id"/></td>
+
+                                    <td class="text-center" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;" id="product_unity"><span t-field="line.product_uom"/></td>
+
+                                    <td class="text-center" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;">
+                                        <div id="quote_qty">
+				<!--        <span t-field="line.product_uom_qty" style="text-align: center"/>
+				<span t-field="line.product_uom" groups="uom.group_uom"/> -->
+				<span t-esc="'%.0f'% line.product_uom_qty"/>
+                                        </div>
+                                    </td>
+
+                                    <td class="text-center" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;">
+                                        <div id="produc_u_value">
+                                            <span t-field="line.u_value" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                        </div>
+                                    </td>
+
+			       <!--  <td t-attf-class="text-center {{ 'd-none d-sm-table-cell' if report_type == 'html' else '' }}" style="border: black 1px solid;padding: 0;vertical-align:inherit">
+                                        <div id="product_discount_percent">
+
+                                            <span t-field="line.discount_percent" style="text-align: center" t-options='{"widget": "float", "precision": 2}'/>
+                                        </div>
+
+				</td> -->
+
+
+                                    <td t-attf-class="text-center {{ 'd-none d-sm-table-cell' if report_type == 'html' else '' }}" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;">
+                                        <div id="product_price_unit">
+
+                                            <span t-field="line.price_unit" style="text-align: center" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                        </div>
+
+                                    </td>
+
+                                    <td t-attf-class="text-center {{ 'd-none d-sm-table-cell' if report_type == 'html' else '' }}" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;">
+                                        <div id="product_price_unit">
+
+                                            <span t-field="line.price_total_related" style="text-align: center" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>
+                                        </div>
+
+                                    </td>
+
+                                </t>
+                            </tr>
+
+                        </t>
+                    </tbody>
+	    </table>
+	    <br/>
+                <div id="total" class="row" name="total" style="page-break-inside: avoid;">
+                        <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-8 col-md-3'} ml-auto">
+                            <!-- Should be replaced in master by t-call="sale.sale_order_portal_content_totals_table" -->
+                            <table class="table table-sm;table-bordered">
+                                <tr class="border-black" style="border: black 1px solid;">
+				<!--  <td style="/*! border: black 1px solid; */padding: 0;vertical-align:inherit;width:45%; font-size:12px; text-align: center;"><strong>Sub-Total</strong></td> -->
+                                    <td style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:12px; text-align: center;"><strong>Sub-Total</strong></td>
+				<!--    <td class="text-center" style="border: black 1px solid;padding: 0;vertical-align:inherit;border-top-color: white; font-size:10px;"> -->
+                                    <td class="text-center" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;">
+                                        <span data-id="total_untaxed" t-field="sale_order.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: sale_order.pricelist_id.currency_id}"/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black" style="border: black 1px solid;">
+                                    <td style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:12px; text-align: center;"><strong>I.G.V 18%</strong></td>
+                                    <td class="text-center" style="border: black 1px solid;padding:0;vertical-align:inherit; font-size:10px;">
+                                        <span data-id="total_amount" t-field="sale_order.amount_tax" style="text-align: center" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: sale_order.pricelist_id.currency_id}"/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black" style="border: black 1px solid;">
+                                    <td style="border: black 1px solid;padding:0;vertical-align:inherit; font-size:12px; text-align: center;"><strong>Total</strong></td>
+                                    <td class="text-center" style="border: black 1px solid;padding: 0;vertical-align:inherit; font-size:10px;">
+                                        <span data-id="total_amount" t-field="sale_order.amount_total" style="text-align: center" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: sale_order.pricelist_id.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[2]/section[4]" position="after">
+          <div class="footer" style="margin-top:30%;">
+                      <style>
+                         hr{
+                         border: 1px solid gray;
+                         }
+                       </style>
+                       <hr/>
+			                 <div class="col-12">
+  			                 <ol style="line-height: 100%; padding: 0px; font-size: 8px; font-style: italic; font-weight: bold; text-align: justify;">
+                            <li>El plazo de entrega cuenta a partir de la confirmación de la recepción y/o aceptación de su Orden de Compra mediante correo electrónico.</li>
+                            <li>INET PERU SAC no se hará responsable por incumplimientos en sus obligaciones cuando éstas se vean afectadas por causas de caso fortuito o fuerza mayor o ajenas a su voluntad (tales como guerras, hurto, vandalismo, conmoción civil, huelgas, insurrección, escasez de insumos, reprogramación de fábrica, dumping, bloqueos, trasbordos, cancelación de vuelos o naves, inconsistencia de carga, proceso aduanero, epidemias, siniestros, desastres naturales).</li>
+                            <li>El CLIENTE se compromete a realizar los pagos únicos o parciales, de acuerdo con el objeto del presente documento.</li>
+                            <li>El CLIENTE aceptará entregas y facturación parciales, así como el pago de las mismas en las fechas de vencimiento.</li>
+                            <li>La información de precios y el material adjunto son considerados propiedad confidencial de INET PERU S.A.C y no podrán ser mostrados o entregados a otros sin el consentimiento escrito de INET PERU S.A.C.</li>
+                            <li>El servicio de despacho es gratuito por ventas superiores a US$250, sujeto al horario y a la disponibilidad del personal.</li>
+                            <li>Si el pedido se envía mediante una agencia de transporte; una vez que la mercadería se deja en la agencia, ésta viaja por cuenta y riesgo del cliente.</li>
+                            <li>Todos los equipos Cisco y Cisco SB se venden con contrato de servicio SmartNet o SMBS. Caso contrario el canal asume los gastos de flete cuando INET PERU S.A.C ejecute la garantía.</li>
+                            <li>La presente Proforma se convertirá en Orden de Pedido una vez firmada y sellada por usted(es) en señal de conformidad, o habiendo enviado su propio formato de Orden de Compra a favor de INET PERU.</li>
+                            <li>Los diseños y configuraciones son sugerencias que deberán ser validadas por el personal calificado del Cliente Los cables de fibra óptica a pedido, se despachan con una tolerancia máxima adicional facturable,  <span style="color:red;">de hasta +5%.</span></li>
+                         </ol>
+                       </div>
+                       <hr/>
+          </div>
+          
+                       <div class="col-12 text-center" style="font-size: 11px;padding: 0px;">
+                            <img src="https://logodownload.org/wp-content/uploads/2014/04/cisco-logo-16.png" style="max-height: 25px;" alt="Logo2"/>
+                            <img src="https://quanti.com.mx/wp-content/uploads/2020/10/logo_600x200_ftn.png" style="max-height: 28px;" alt="Logo3"/>
+                            <img src="https://cameoglobal.com/wp-content/uploads/2019/07/480x220-Aruba-Networks-Partner-Cameo-Global.svg" style="max-height: 30px;" alt="Logo3"/>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/600px-Dell_Logo.svg.png" style="max-height: 30px;" alt="Logo2"/>
+                            <img src="https://comunidadblogger.net/wp-content/uploads/2019/03/Elite-de-Ruckus.png" style="max-height: 37px;" alt="Logo3"/>
+                            <img src="https://www.softlandperu.com/wp-content/uploads/2017/08/vmware-logo.png" style="max-height: 30px;" alt="Logo3"/>
+                            <img src="https://logos-marcas.com/wp-content/uploads/2020/11/HP-Logo.png" style="max-height: 30px;" alt="Logo2"/>
+                            <img src="https://conocimientolibre.mx/wp-content/uploads/2019/05/microsoft-logo-1.png" style="max-height: 30px;" alt="Logo3"/>
+                            <img src="https://ce8dc832c.cloudimg.io/cdn/n/n@eb9f93f4f7a04795987e8762583bb0e043b2fcba/_cs_/2020/06/5eea1f248ff84/panduit_logo.png" style="max-height: 17px;" alt="Logo3"/>
+                            <img src="https://seguridadtotalmexico.com/wp-content/uploads/2021/02/partner6-700x460.png" style="max-height: 40px;" alt="Logo2"/>
+                            <img src="https://cctindustrial.com.mx/wp-content/uploads/2019/10/logo-2x.png" style="max-height: 30px;" alt="Logo3"/>
+                            <img src="http://1000marcas.net/wp-content/uploads/2019/12/IBM-Color.jpg" style="max-height: 30px;" alt="Logo3"/>
+                            <img src="https://mms.businesswire.com/media/20210310006036/es/820206/23/Veeam_logo_topaz_2019.jpg" style="max-height: 30px;" alt="Logo3"/>
+                            
+
+                          </div>
+                    <!--      <div class="col-2" style="font-size:10px;">
+                            <div t-if="report_type == 'pdf'">
+                              Pág: <span class="page"/> / <span class="topage"/>
+                            </div>
+                          </div>  -->
+          
+            <section style="font-size: 0.7rem;">
+<!--              <div>
+                    <br></br>
+                    <br></br>   
+                </div>
+                <div>
+                    <a class=""><b>Condiciones Comerciales:</b></a>
+                </div>
+                <div>
+                    <a class="">Términos y Condiciones:</a>
+                </div>
+                <hr class="mt-0 mb-1" style="border-top: 0;"/>
+                <div>
+		  </div> -->
+                   <!-- <span style="font-size: 10px;" t-field="sale_order.note"/> -->
+            </section>
+        </xpath>
+    </template>
+</odoo>

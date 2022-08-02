@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wizard_aging_receivable" model="ir.ui.view">
+            <field name="name">aging.receivable</field>
+            <field name="model">aging.receivable</field>
+            <field name="arch" type="xml">
+                <form string="Anticuamiento de Cobranza">
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="range_date"/>
+                        <field name="company_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Rango" attrs="{'invisible': [('range_date','=',False)]}">
+                            <group>
+                            <label for="date_from" string="Rango"/>
+                            <div>
+                                <field name="date_from" class="oe_inline" attrs="{'required':[('range_date','=',True)]}"/> -
+                                <field name="date_to" class="oe_inline" attrs="{'required':[('range_date','=',True)]}"/>
+                            </div>
+                            </group>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <widget type="download_button" model="aging.receivable.xls" class="oe_highlight" string="Imprimir"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="aging_receivable_action" model="ir.actions.act_window">
+            <field name="name">Acuentamiento de Cobranza</field>
+            <field name="res_model">aging.receivable</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="aging_receivable_menu" name="Ventas por cobrar" action="aging_receivable_action" parent="base.next_id_64" sequence="18"/>
+    </data>
+</odoo>
