@@ -28,7 +28,7 @@
     'mail': 'pimentelrojas@gmail.com',
     'category': 'account',
     'depends': [
-        "base", "stock", "account", "sale_management",
+        "base", "stock", "account", "sale_management", "purchase"
     ],
     'description': 'Modulo personalizado para INET PERU',
     'data': [
