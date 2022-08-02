@@ -178,13 +178,16 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='user_id']" position="after">
                     <field name="invoice_date"/>
+                    <field name="currency_id"/>
+                    <field name="currency_sale"/>
                 </xpath>
             </field>
         </record>
 
-        <menuitem id="menu_sale_order_tree_view_inet" 
-        name="R. Ventas" 
-        parent="sale.menu_sale_report"
-        action="action_sale_order_tree_view_inet"/>
+        <menuitem 
+            id="menu_sale_order_tree_view_inet" 
+            name="R. Ventas" 
+            parent="sale.menu_sale_report"
+            action="action_sale_order_tree_view_inet"/>
     </data>
 </odoo>
